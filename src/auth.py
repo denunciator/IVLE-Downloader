@@ -14,12 +14,12 @@ def login():
     response = requests.post(url, data=payload, allow_redirects=True)
 
     if len(response.text) != 416: #This too hackish, will try to do proper browser based authentication
-        print "Wrong username or password, please try again!"
+        print ("Wrong username or password, please try again!")
         return "NULL"
     else:
         with open(config.authfile, 'w') as fi:
             fi.write('{"Token": "' + response.text + '"}') #rewrite the token with new value
-        print "Login success"
+        print ("Login success")
         return response.text
 
 def isValid(token):
