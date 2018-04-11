@@ -9,7 +9,7 @@ def downloadFile(efile, path, token):
     if efile['isDownloaded']:
         return
 
-    print "Downloading file: " + efile['FileName']
+    print ("Downloading file: " + efile['FileName'])
     fileid = efile['ID']
     url = config.downloadurl
     payload = {'APIKey': config.APIKey, 'AuthToken': token, 'ID': fileid, 'target': 'workbin'}
@@ -58,13 +58,13 @@ def getFiles(modules, token):
         name = re.sub(r'\\|/|\*|"|\?|:|\||<|>', "-", module['CourseCode'])
 
         if name in config.exclude:
-            print "Skipping module " + name + "...\n"
+            print ("Skipping module " + name + "...\n")
             continue
 
         path = os.path.join(config.filepath, name)
         makedir(path)
 
-        print "Downloading for module " + name + "..."
+        print ("Downloading for module " + name + "...")
 
         payload['CourseID'] = module['ID']
         response = requests.get(url, params=payload)
@@ -73,7 +73,7 @@ def getFiles(modules, token):
 
         # list the workbins of each module
         workbins = data['Results']
-        print str(len(workbins)) + " workbin(s) found"
+        print (str(len(workbins)) + " workbin(s) found")
 
         if len(workbins) > 1:  # if there are more than one workbin, create a folder for each workbin
             for wbin in workbins:
@@ -84,4 +84,4 @@ def getFiles(modules, token):
             for wbin in workbins:
                 traverseWorkBin(wbin, path, token)
 
-        print ""
+        print ("")
