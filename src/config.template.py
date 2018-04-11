@@ -17,7 +17,7 @@ hosturl = "https://ivle.nus.edu.sg/api/Lapi.svc/"
 
 downloadurl = "https://ivle.nus.edu.sg/api/downloadfile.ashx"
 
-filepath = "" # e.g: D:\NUS\SEM6
+filepath = "" # e.g: D:\NUS\SEM6. Use double backslashes (e.g. D:\\NUS\\SEM6) to avoid compilation errors.
 
 exclude = [""] #e.g "CS2103-CS2103T"
 
